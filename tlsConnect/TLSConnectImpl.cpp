@@ -121,10 +121,11 @@ void CTLSConnect::Impl::ParseUrl(std::wstring wsUrl)
 	ZeroMemory(&m_urlComp, sizeof(m_urlComp));
 	m_urlComp.dwStructSize = sizeof(m_urlComp);
 
-	static wchar_t schema[URL_LENGTH];
-	static wchar_t hostName[URL_LENGTH];
-	static wchar_t path[URL_LENGTH];
-	static wchar_t parameter[URL_LENGTH];
+	//static wchar_t schema[URL_LENGTH];
+	wchar_t* schema = new wchar_t[URL_LENGTH];
+	wchar_t* hostName = new wchar_t[URL_LENGTH];
+	wchar_t* path = new wchar_t[URL_LENGTH];
+	wchar_t* parameter = new wchar_t[URL_LENGTH];
 
 	m_urlComp.dwSchemeLength = (DWORD)-1;
 	m_urlComp.dwHostNameLength = (DWORD)-1;
