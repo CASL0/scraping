@@ -53,12 +53,12 @@ public:
 	}
 
 private:
-	virtual void SetupSslCtx(void);
-	virtual void LoadCertificates(void);
-	virtual void SetupBIO(void);
-	virtual void handshake(void);
+	void SetupSslCtx(void);
+	void LoadCertificates(void);
+	void SetupBIO(void);
+	void handshake(void);
 	virtual void request(void);
-	virtual void ParseUrl(std::wstring wsUrl);
+	void ParseUrl(std::wstring wsUrl);
 	virtual void SetTlsExtensions(void);
 
 	void TLSerror(const char* fileName,int lineNum,const char* msg)
