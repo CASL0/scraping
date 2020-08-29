@@ -18,7 +18,7 @@
 class CTLSConnect::Impl
 {
 public:
-	Impl(std::wstring wsUrl):m_response(std::string())
+	Impl(std::wstring wsUrl):m_sResponse(std::string())
 	{
 		ParseUrl(wsUrl);
 	}
@@ -39,6 +39,7 @@ public:
 		OutputLog("connect");
 		handshake();
 		request();
+		ProcessResponse();
 	}
 
 	void close(void)
@@ -60,6 +61,7 @@ private:
 	virtual void request(void);
 	void ParseUrl(std::wstring wsUrl);
 	virtual void SetTlsExtensions(void);
+	virtual void ProcessResponse(void);
 
 	void TLSerror(const char* fileName,int lineNum,const char* msg)
 	{
@@ -78,7 +80,7 @@ private:
 	SSL* m_ssl;
 	BIO* m_bio;
 	URL_COMPONENTS m_urlComp;
-	std::string m_response;
+	std::string m_sResponse;
 };
 
 #endif

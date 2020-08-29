@@ -1,5 +1,6 @@
 ﻿#include "TLSConnect.h"
 #include "TLSConnectImpl.h"
+#include "ScrapingUtility.h"
 
 
 #pragma comment(lib,"libssl.lib")
@@ -7,6 +8,7 @@
 #pragma comment(lib,"ws2_32.lib")
 #pragma comment(lib,"crypt32.lib")
 #pragma comment(lib,"winhttp.lib")
+#pragma comment(lib,"ScrapingUtility.lib")
 
 #define URL_LENGTH 256
 
@@ -111,7 +113,7 @@ void CTLSConnect::Impl::request(void)
 	std::ofstream ofStream(outFileName);
 	while ((read_size = SSL_read(m_ssl, buf, 1024 - 1)) > 0)
 	{
-		ofStream << buf;
+		m_sResponse+= buf;
 		memset(buf, 0, sizeof(buf));
 	}
 }
@@ -144,3 +146,8 @@ void CTLSConnect::Impl::ParseUrl(std::wstring wsUrl)
 	}
 }
 
+void CTLSConnect::Impl::ProcessResponse(void)
+{
+	CScrapingUtility contents(m_sResponse);
+	contents.scraping();
+}

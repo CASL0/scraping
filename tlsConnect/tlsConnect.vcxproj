@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>../external/include;$(IncludePath)</IncludePath>
-    <LibraryPath>../external/lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>../ScrapingUtility;../external/include;$(IncludePath)</IncludePath>
+    <LibraryPath>../Debug;../external/lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
